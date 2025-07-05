@@ -1,4 +1,4 @@
-name: Deploy Hugo site to Pages
+name: Deploy Hugo site to GitHub Pages
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository (with submodules)
         uses: actions/checkout@v3
         with:
-          submodules: true  # Get theme submodules
+          submodules: true
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -22,12 +22,12 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Build
+      - name: Build Hugo site
         run: hugo --minify --config hugo.yaml
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
           publish_branch: gh-pages
+          publish_dir: ./public
