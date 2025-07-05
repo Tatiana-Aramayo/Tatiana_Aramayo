@@ -1,10 +1,5 @@
-module github.com/hugo-toha/toha/exampleSite
+module github.com/Tatiana-Aramayo/Tatiana_Aramayo
 
-go 1.21
+go 1.24.4
 
-replace github.com/hugo-toha/toha/v4 => ../
-
-require (
-	github.com/hugo-toha/hugo-toha.github.io v0.0.0-20241018183051-dd13c36f46b4 // indirect
-	github.com/hugo-toha/toha/v4 v4.7.0 // indirect
-)
+require github.com/hugo-toha/toha/v4 v4.9.0 // indirect
